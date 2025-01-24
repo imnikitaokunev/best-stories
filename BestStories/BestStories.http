@@ -1,0 +1,9 @@
+@BestStories_HostAddress = http://localhost:5276
+
+GET {{BestStories_HostAddress}}/weatherforecast/
+Accept: application/json
+
+GET {{BestStories_HostAddress}}/api/beststories
+Accept: application/json
+
+###
