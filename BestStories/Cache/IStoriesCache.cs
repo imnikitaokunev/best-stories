@@ -1,9 +1,10 @@
 using BestStories.Domain;
 
-namespace BestStories;
+namespace BestStories.Cache;
 
 public interface IStoriesCache
 {
     bool Contains(int id);
     Story Get(int id);
+    void Add(Story story);
 }

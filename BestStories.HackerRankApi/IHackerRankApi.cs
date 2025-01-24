@@ -1,3 +1,5 @@
+using BestStories.Common;
+
 namespace BestStories.HackerRankApi;
 
 public interface IHackerRankApi

@@ -1,7 +1,5 @@
 using BestStories;
 using BestStories.HackerRankApi;
-using Mapster;
-using MapsterMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,16 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.RegisterHackerRankApi(builder.Configuration);
-
-builder.Services.AddScoped<HttpClient>();
-builder.Services.AddSingleton<IStoriesCache, StoriesCache>();
-
-var config = TypeAdapterConfig.GlobalSettings;
-
-builder.Services.AddSingleton(config);
-builder.Services.AddScoped<IMapper, ServiceMapper>();
-
-Mappings.Apply();
+builder.Services.RegisterApi();
 
 var app = builder.Build();
 

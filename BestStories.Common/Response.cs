@@ -1,4 +1,4 @@
-namespace BestStories.HackerRankApi;
+namespace BestStories.Common;
 
 public class Response<TResult>
 {

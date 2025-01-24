@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using BestStories.Common;
 
 namespace BestStories.HackerRankApi;
 
@@ -34,5 +35,6 @@ public class HackerRankApi : IHackerRankApi
         }
         
         var stories = await Task.WhenAll(responses.Select(r => r.Content.ReadFromJsonAsync<HackerRankStory>()));
+        return Response<IEnumerable<HackerRankStory>>.Success(stories);
     }
 }

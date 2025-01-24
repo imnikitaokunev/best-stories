@@ -13,7 +13,7 @@ public class Mappings
             .Map(dst => dst.Title, src => src.Title)
             .Map(dst => dst.Uri, src => src.Url)
             .Map(dst => dst.PostedBy, src => src.By)
-            .Map(dst => dst.Time, src => src.Time)
+            .Map(dst => dst.Time, src => DateTimeOffset.FromUnixTimeSeconds(src.Time).DateTime)
             .Map(dst => dst.Score, src => src.Score)
             .Map(dst => dst.CommentCount, src => src.Descendants);
     }

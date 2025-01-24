@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestStories", "BestStories\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestStories.HackerRankApi", "BestStories.HackerRankApi\BestStories.HackerRankApi.csproj", "{FB899E72-26BC-489F-995A-C8968FAD9636}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestStories.Common", "BestStories.Common\BestStories.Common.csproj", "{84C8D936-AD13-4A37-9E33-05A60A496546}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FB899E72-26BC-489F-995A-C8968FAD9636}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB899E72-26BC-489F-995A-C8968FAD9636}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB899E72-26BC-489F-995A-C8968FAD9636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C8D936-AD13-4A37-9E33-05A60A496546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C8D936-AD13-4A37-9E33-05A60A496546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C8D936-AD13-4A37-9E33-05A60A496546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C8D936-AD13-4A37-9E33-05A60A496546}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

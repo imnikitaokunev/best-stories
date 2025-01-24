@@ -1,5 +1,4 @@
-using BestStories.Domain;
-using BestStories.HackerRankApi;
+using BestStories.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestStories.Controllers;
@@ -8,40 +7,22 @@ namespace BestStories.Controllers;
 [Route("api/beststories")]
 public class BestStoriesController : ControllerBase
 {
-    private readonly IHackerRankApi _hackerRankApi;
-    private readonly IStoriesCache _cache;
+    private readonly IBestStoriesService _bestStoriesService;
 
-    public BestStoriesController(IHackerRankApi hackerRankApi, IStoriesCache cache)
+    public BestStoriesController(IBestStoriesService bestStoriesService)
     {
-        _hackerRankApi = hackerRankApi;
-        _cache = cache;
+        _bestStoriesService = bestStoriesService;
     }
 
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] int count)
     {
-        var bestStoriesResponse = await _hackerRankApi.GetBestStoriesIdsAsync();
-        if (!bestStoriesResponse.IsSuccess)
+        var response = await _bestStoriesService.GetStoriesAsync(count);
+        if (!response.IsSuccess)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, bestStoriesResponse.Error);
-        }
-
-        var response = new List<Story>();
-
-        var bestStories = bestStoriesResponse.Result.Take(count).ToList();
-        var cachedStories = bestStories.Where(x => _cache.Contains(x)).Select(id => _cache.Get(id));
-        
-        var storiesToLoad = bestStories.Except(cachedStories.Select(x => x.Id));
-        var loadStoriesResponse = await _hackerRankApi.GetStoriesAsync(storiesToLoad);
-        if (!loadStoriesResponse.IsSuccess)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, loadStoriesResponse.Error);
+            return StatusCode(StatusCodes.Status500InternalServerError, response.Error);
         }
         
-        // map stories
-        
-        //response.AddRange(loadStoriesResponse.Result);
-        
-        return Ok(bestStoriesResponse.Result);
+        return Ok(response.Result);
     }
 }
