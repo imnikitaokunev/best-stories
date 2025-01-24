@@ -19,7 +19,7 @@ This project is a RESTful API built using ASP.NET Core that retrieves the detail
     "commentCount": 572
   },
   {
-    ...
+    "..."
   }
 ]
 ```
